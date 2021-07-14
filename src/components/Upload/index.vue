@@ -1,4 +1,12 @@
-<!-- 图片上传组件 -->
+<!-- 
+    name: 图片上传组件,
+    param: {
+        action: 后台上传接口链接
+    },
+    author: @sanqi,
+    data: 2021/07/14,
+    github: https://github.com/sanqi377
+-->
 <template>
     <div class="upload">
         <input
@@ -10,25 +18,27 @@
         <span class="submit" @click="submitFile()">上传图片</span>
     </div>
 </template>
+
 <script>
-import axios from "axios";
 var fileDom;
 export default {
     name: "Upload",
+    props: ["action"],
     methods: {
-        getFileInfo: (e) => {
+        getFileInfo: function (e) {
             fileDom = e.target;
+            console.log(this.action);
         },
-        submitFile: () => {
+        submitFile: function () {
             if (fileDom) {
                 let file = fileDom.files[0];
                 let formdata = new FormData(); //formdata格式
                 formdata.append("file", file); //图片文件
                 formdata.append("name", file.name); //其他参数
-                axios({
+                this.$http({
                     method: "POST",
                     data: formdata,
-                    url: "http://api.xqphp.com/admin/common/upload",
+                    url: this.action,
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
@@ -42,6 +52,7 @@ export default {
     },
 };
 </script>
+
 <style scoped>
 .upload {
     display: inline-block;

@@ -2,7 +2,7 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
         <h1>Vue 常用组件</h1>
-        <Upload />
+        <Upload action="http://api.xqphp.com/admin/common/upload"/>
     </div>
 </template>
 
