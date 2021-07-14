@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Vue 常用组件</h1>
+    <Upload />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Upload from '@/components/Upload/index.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Upload
   }
 }
 </script>
