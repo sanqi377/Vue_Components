@@ -2,17 +2,26 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
         <h1>Vue 常用组件</h1>
-        <Upload action="http://api.xqphp.com/admin/common/upload"/>
+        <input-Number v-model="count" :min="-5" :max="5" @handleCount="handleCount" />
     </div>
 </template>
 
 <script>
-import Upload from "@/components/Upload/index.vue";
-
+import inputNumber from "@/components/inputNumber/index";
 export default {
     name: "App",
+    data() {
+        return {
+            count: 0,
+        };
+    },
+    methods: {
+        handleCount(val) {
+            this.count += val;
+        },
+    },
     components: {
-        Upload,
+        inputNumber,
     },
 };
 </script>
