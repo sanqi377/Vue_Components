@@ -2,26 +2,26 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
         <h1>Vue 常用组件</h1>
-        <input-Number v-model="count" :min="-5" :max="5" @handleCount="handleCount" />
+        <markDown v-model="val" @change="change" />
     </div>
 </template>
 
 <script>
-import inputNumber from "@/components/inputNumber/index";
+import markDown from "@/components/markDown";
 export default {
     name: "App",
     data() {
         return {
-            count: 0,
+            val: null,
         };
     },
     methods: {
-        handleCount(val) {
-            this.count += val;
+        change(val) {
+            console.log(val.text, val.html);
         },
     },
     components: {
-        inputNumber,
+        markDown,
     },
 };
 </script>
@@ -31,7 +31,7 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    /* text-align: center; */
     color: #2c3e50;
     margin-top: 60px;
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="number">
         <div class="btn" @click="handleCount(-1)">-</div>
-        <div class="count">{{ value }}</div>
+        <input class="count" type="number" v-model="count" @change="handleInput"/>
         <div class="btn" @click="handleCount(1)">+</div>
     </div>
 </template>
@@ -20,19 +20,32 @@ export default {
             type: Number,
         },
     },
+    data() {
+        return {
+            count: null,
+        };
+    },
     methods: {
+        handleInput(val){
+            console.log(val)
+        },
         handleCount(val) {
-            if (this.value >= this.max) {
-                if (val == -1) {
-                    this.$emit("handleCount", val);
-                }
-            } else if (this.value <= this.min) {
-                if (val == 1) {
-                    this.$emit("handleCount", val);
-                }
-            } else {
-                this.$emit("handleCount", val);
+            this.count = this.value;
+            console.log(val,this.value)
+            if (this.count > this.max) {
+                this.$emit("handleCount", this.max);
             }
+            // if (this.value >= this.max) {
+            //     if (val == -1) {
+            //         this.$emit("handleCount", val);
+            //     }
+            // } else if (this.value <= this.min) {
+            //     if (val == 1) {
+            //         this.$emit("handleCount", val);
+            //     }
+            // } else {
+            //     this.$emit("handleCount", val);
+            // }
         },
     },
 };
